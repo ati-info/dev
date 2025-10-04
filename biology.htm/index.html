@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>জীববিজ্ঞান অ্যাসাইনমেন্ট</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function showAssignment() {
+      document.getElementById('cover').style.display = 'none';
+      document.getElementById('assignment').style.display = 'block';
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>জীববিজ্ঞান অ্যাসাইনমেন্ট</h1>
+  </header>
+
+  <div class="content">
+    <div id="cover">
+      <h2>অ্যাসাইনমেন্ট নির্দেশনা</h2>
+      <p>📄 কভার পেজ লিখন নির্দেশনা:<br>
+      ছাত্রের নাম, রোল, ক্লাস, ইনস্টিটিউটের নাম ও বিষয় লিখে জমা দাও।</p>
+      <br>
+      <button onclick="showAssignment()">💚 Next</button>
+    </div>
+
+    <div id="assignment" style="display:none;">
+      <h2>🧪 প্রশ্ন ও উত্তর</h2>
+      <div id="qa">
+        <!-- এখানে বট নতুন প্রশ্ন/উত্তর যোগ করবে -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
