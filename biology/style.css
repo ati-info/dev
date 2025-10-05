@@ -148,3 +148,49 @@ button:hover { background-color: #1e7e34; }
     .question-text { font-size: 1.2em; }
     .answer-text { font-size: 1.1em; }
 }
+/* কভার পিকচার ছোট করার জন্য */
+.cover-page img { 
+    max-width: 90%; 
+    max-height: 40vh; /* পিকচারটি ছোট করা হলো */
+    width: auto;
+    display: block;
+    margin: 20px auto; /* কেন্দ্রে আনার জন্য */
+}
+
+/* কভার পেজের নির্দেশনার জন্য */
+.cover-instruction {
+    font-weight: bold;
+    color: #cc0000; /* লাল রং ব্যবহার করা হলো */
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+/* নেভিগেশন বাটন চওড়া করার জন্য (জীববিজ্ঞান অ্যাসাইনমেন্ট বাটন) */
+.wide-nav-button {
+    background-color: #28a745; /* সবুজ রং */
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    margin: 30px auto;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: block; /* পুরো চওড়া করার জন্য */
+    width: 90%; /* অনেকটা চওড়া হবে */
+    max-width: 400px; /* একটি নির্দিষ্ট সীমা */
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.wide-nav-button:hover {
+    background-color: #1e7e34;
+}
+
+/* biology/index.html থেকে অপ্রয়োজনীয় subject-grid অংশ সরিয়ে দেওয়ায়, এই ক্লাসটি শুধু অধ্যায়-লিংকের জন্য থাকবে। */
+.subject-grid {
+    display: flex; /* চ্যাপ্টার লিংকগুলোকে পাশাপাশি রাখার বদলে নিচে নিচে রাখার জন্য পরিবর্তন করা হয়েছে */
+    flex-direction: column; 
+    align-items: center; 
+    gap: 15px;
+    margin-top: 20px;
+}
