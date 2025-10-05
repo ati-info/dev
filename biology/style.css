@@ -85,3 +85,66 @@
 }
 
 /* --- সাধারণ কনটেন্ট স্টাইল --- */
+body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f4f4; }
+.main-content {
+    max-width: 900px; margin: 20px auto; background-color: white;
+    padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); min-height: 80vh;
+}
+header { text-align: center; border-bottom: 3px solid #007BFF; padding-bottom: 10px; margin-bottom: 30px; }
+.back-link { text-decoration: none; color: #007BFF; font-weight: bold; float: left; transition: color 0.3s;}
+.back-link:hover { color: #0056b3; }
+.cover-page { text-align: center; padding: 50px 0; }
+.info-block {
+    margin: 30px auto; padding: 25px; text-align: left; border: 2px solid #ddd;
+    border-radius: 8px; max-width: 450px; background-color: #f9f9f9;
+}
+button {
+    background-color: #28a745; 
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+button:hover { background-color: #1e7e34; }
+
+/* --- প্রশ্ন-উত্তর স্টাইল (chapter-N.html এর জন্য) --- */
+.q {
+    border: 1px solid #ddd; 
+    padding: 18px; 
+    margin-bottom: 25px;
+    border-radius: 8px; 
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+}
+.q img {
+    max-width: 100%; 
+    height: auto; 
+    margin-bottom: 15px; 
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+.question-text {
+    color: #0000FF; /* সম্পূর্ণ নীল */
+    font-size: 1.4em; 
+    font-weight: bold; 
+    margin: 0 0 10px 0;
+    padding-bottom: 5px; 
+    border-bottom: 1px dashed #ccc;
+}
+.answer-text {
+    color: #000000; /* সম্পূর্ণ কালো */
+    font-size: 1.2em; 
+    line-height: 1.6; 
+    margin: 0; 
+    white-space: pre-wrap; /* লাইন ব্রেক ঠিক রাখতে */
+}
+
+/* মোবাইল রেসপনসিভনেস */
+@media (max-width: 600px) {
+    .main-content { margin: 10px; padding: 10px; }
+    .question-text { font-size: 1.2em; }
+    .answer-text { font-size: 1.1em; }
+}
