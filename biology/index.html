@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>জীববিজ্ঞান - কভার পেজ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loading-overlay">
+        <div class="container loader-center">
+            <div class="slice"></div><div class="slice"></div><div class="slice"></div>
+            <div class="slice"></div><div class="slice"></div><div class="slice"></div>
+        </div>
+        <p>লোড হচ্ছে...</p>
+    </div>
+
+    <div class="main-content" style="display:none;">
+        <header>
+            <a href="../index.html" class="back-link">← বিষয় নির্বাচন</a>
+            <h1>কৃষি প্রশিক্ষণ ইনস্টিটিউট, তাজহাট, রংপুর</h1>
+        </header>
+
+        <section class="cover-page">
+            <h2 class="subject-title">বিষয়: জীববিজ্ঞান</h2>
+            
+            <div class="info-block">
+                <p><strong>প্রতিষ্ঠান:</strong> কৃষি প্রশিক্ষণ ইনস্টিটিউট, তাজহাট, রংপুর</p>
+                <p><strong>নাম:</strong> প্রতিভা বর্মন</p>
+                <p><strong>শ্রেণী:</strong> ২য় সেমিস্টার | <strong>শাখা:</strong> খ | <strong>রোল:</strong> ৫৪</p>
+                </div>
+
+            <button onclick="showLoader(event); window.location.href='assignments/chapter-1.html'">অধ্যায় ১ (কোশ্চেন ও উত্তর)</button>
+        </section>
+    </div>
+
+    <script>
+        // index.html থেকে JavaScript কোড এখানেও ব্যবহার করুন
+        function showLoader(event) {
+            document.getElementById('loading-overlay').style.display = 'flex';
+        }
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('loading-overlay').style.display = 'none';
+                document.querySelector('.main-content').style.display = 'block';
+            }, 500);
+        }
+    </script>
+</body>
+</html>
