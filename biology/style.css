@@ -1,0 +1,96 @@
+/* কভার পিকচার ছোট করার জন্য */
+.cover-page img { 
+    max-width: 90%; 
+    max-height: 40vh; /* পিকচারটি ছোট করা হলো */
+    width: auto;
+    display: block;
+    margin: 20px auto; 
+    border-radius: 4px;
+}
+
+/* কভার পেজের নির্দেশনার জন্য */
+.cover-instruction {
+    font-weight: bold;
+    color: #cc0000; 
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+/* ✅ নতুন: অধ্যায় লিংকগুলো লম্বা ও চওড়া বাটন হিসেবে নিচে নিচে দেখানোর জন্য */
+.chapter-list {
+    display: flex;
+    flex-direction: column; /* বাটনগুলো নিচে নিচে থাকবে */
+    align-items: center; /* কেন্দ্রে থাকবে */
+    gap: 15px; /* বাটনগুলোর মধ্যে দূরত্ব */
+    margin: 30px auto;
+}
+
+.chapter-link {
+    background-color: #007BFF; /* নীল রং */
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    display: block;
+    width: 90%; 
+    max-width: 400px; /* চওড়া বাটন */
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.chapter-link:hover {
+    background-color: #0056b3;
+}
+
+/* ✅ প্রশ্ন-উত্তর স্টাইল */
+.q {
+    border: none; /* কোনো বর্ডার থাকবে না */
+    padding: 10px 0;
+    margin-bottom: 5px; /* কাছাকাছি থাকবে */
+    border-bottom: 1px solid #eee; /* হালকা বিভাজক লাইন */
+    text-align: left;
+}
+
+.question-text { 
+    font-weight: bold;
+    color: #0000FF; /* নীল কালার */
+    font-size: 0.95em; /* মাঝারি থেকে ছোট */
+    line-height: 1.4;
+    counter-increment: q-counter; 
+    display: block; 
+}
+
+.question-text::before { 
+    content: counter(q-counter) ". "; 
+    color: #333; 
+    margin-right: 5px;
+}
+
+.answer-text { 
+    color: #000000; /* কালো কালার */
+    font-size: 0.9em; /* মাঝারি থেকে ছোট */
+    margin-top: 5px;
+    padding-left: 15px; /* প্রশ্ন থেকে সামান্য ডানে সরিয়ে রাখা */
+    line-height: 1.4; 
+}
+
+/* যদি আপনি কোনো নেভিগেশন বাটন ব্যবহার করেন */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+.nav-buttons a {
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.nav-buttons a.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
