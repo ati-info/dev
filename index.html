@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্রধান মেনু - অ্যাসাইনমেন্ট পোর্টাল</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="loading-overlay">
+        <div class="container loader-center">
+            <div class="slice"></div>
+            <div class="slice"></div>
+            <div class="slice"></div>
+            <div class="slice"></div>
+            <div class="slice"></div>
+            <div class="slice"></div>
+        </div>
+        <p>লোড হচ্ছে...</p>
+    </div>
+
+    <div class="main-body" style="display:none;">
+        <header>
+            <h1>কৃষি প্রশিক্ষণ ইনস্টিটিউট - অ্যাসাইনমেন্ট পোর্টাল</h1>
+        </header>
+
+        <section class="subject-grid">
+            <a href="biology/index.html" class="subject-card" onclick="showLoader(event)">
+                <i class="fas fa-leaf"></i>
+                <h2>জীববিজ্ঞান</h2>
+            </a>
+            <a href="other_subjects/math.html" class="subject-card disabled" onclick="showLoader(event)">
+                <i class="fas fa-calculator"></i>
+                <h2>গণিত</h2>
+            </a>
+            <a href="other_subjects/physics.html" class="subject-card disabled" onclick="showLoader(event)">
+                <i class="fas fa-atom"></i>
+                <h2>পদার্থ</h2>
+            </a>
+            <a href="other_subjects/chemistry.html" class="subject-card disabled" onclick="showLoader(event)">
+                <i class="fas fa-flask"></i>
+                <h2>রসায়ন</h2>
+            </a>
+            <a href="other_subjects/agriculture.html" class="subject-card disabled" onclick="showLoader(event)">
+                <i class="fas fa-tractor"></i>
+                <h2>কৃষি</h2>
+            </a>
+        </section>
+    </div>
+
+    <script>
+        function showLoader(event) {
+            // event.preventDefault(); // যদি লিঙ্ক অ্যাকশন বন্ধ করতে চান
+            document.getElementById('loading-overlay').style.display = 'flex';
+        }
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('loading-overlay').style.display = 'none';
+                document.querySelector('.main-body').style.display = 'block';
+            }, 500);
+        }
+    </script>
+</body>
+</html>
