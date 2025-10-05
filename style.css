@@ -85,3 +85,45 @@
 }
 
 /* --- প্রধান মেনু স্টাইল --- */
+body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f4f4; padding: 20px; text-align: center; }
+header { background-color: #007BFF; color: white; padding: 20px 0; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.subject-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px; 
+    max-width: 1000px; 
+    margin: 0 auto;
+}
+.subject-card {
+    background-color: white; 
+    padding: 30px; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    text-decoration: none; 
+    color: #333;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.subject-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
+}
+.subject-card i { 
+    font-size: 3em; 
+    color: #007BFF; 
+    margin-bottom: 10px; 
+}
+.subject-card h2 {
+    margin: 0;
+    font-size: 1.4em;
+}
+.subject-card.disabled { 
+    opacity: 0.6; 
+    cursor: not-allowed; 
+}
+
+/* মোবাইল রেসপনসিভনেস */
+@media (max-width: 600px) { 
+    .subject-grid { 
+        grid-template-columns: 1fr; 
+    } 
+}
