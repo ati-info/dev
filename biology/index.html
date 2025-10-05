@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>জীববিজ্ঞান অ্যাসাইনমেন্ট</title>
+    <link rel="stylesheet" href="../style.css"> 
+</head>
+<body>
+    <div id="loading-overlay">
+        </div>
+    <div class="main-content">
+        <header><a href="../index.html" class="back-link">← বিষয় নির্বাচন</a><h1>জীববিজ্ঞান অ্যাসাইনমেন্ট</h1></header>
+        
+        <div class="cover-page">
+            <p class="cover-instruction">কভার পেজ লেখার নির্দেশনা</p> 
+            
+            <img src="../images/photo_1759637051.jpg" alt="কভার পিকচার">
+        </div>
+        
+        <div class="chapter-list">
+            <a href="assignments/chapter-1.html" class="chapter-link">অধ্যায় ১ শুরু করুন →</a>
+            
+            </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() { setTimeout(function() { document.getElementById('loading-overlay').style.display = 'none'; }, 1000); });
+        document.querySelectorAll('a').forEach(link => { var loader = document.getElementById('loading-overlay'); link.addEventListener('click', function(event) { loader.style.display = 'flex'; }); });
+    </script>
+</body>
+</html>
