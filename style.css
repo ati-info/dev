@@ -1,0 +1,182 @@
+/* গ্লোবাল সেটিংস */
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.2); 
+    --glass-border: rgba(255, 255, 255, 0.18); 
+    --glass-shadow: rgba(0, 0, 0, 0.1); 
+    --primary-color: #007aff; 
+    --text-color: #1c1c1e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden; 
+    position: relative;
+    min-height: 100vh; 
+}
+
+/* --- ১. কাস্টম ব্যাকগ্রাউন্ড ইফেক্ট (ফুল স্ক্রিন কভার) --- */
+.background-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* আপনার স্টাডি মোড ব্যাকগ্রাউন্ড */
+    background: url('../images/photo_1759768080.jpg') no-repeat center center/cover;
+    filter: brightness(0.8) contrast(1.1) saturate(0.8); /* স্টাডি মোড ইফেক্ট */
+    z-index: -2;
+}
+
+/* --- ২. Glassmorphism কনটেইনার --- */
+.glass-container {
+    padding: 30px;
+    border-radius: 25px; 
+    background: var(--glass-bg);
+    box-shadow: 0 8px 32px var(--glass-shadow);
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+    max-width: 90%;
+    width: 600px; 
+    margin: 20px; 
+}
+
+.main-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+/* টাইটেল ফিক্স: বক্সের মধ্যে এক লাইনে থাকবে */
+.glass-title {
+    font-size: 1.6rem; 
+    font-weight: 700;
+    color: #fff; 
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding: 5px 0;
+}
+
+.glass-subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #e0e0e0;
+}
+
+
+/* --- ৩. সাবজেক্ট গ্রিড/কার্ড স্টাইল --- */
+.subject-card {
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px; 
+    padding: 20px 10px;
+    background: rgba(255, 255, 255, 0.3); 
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 18px; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+}
+
+.subject-card:hover:not(.disabled) {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px var(--glass-shadow);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* ক্লিক অ্যানিমেশন (iOS Press Effect) */
+.subject-card.is-active:not(.disabled) {
+    transform: scale(0.95);
+    opacity: 0.8;
+    box-shadow: none;
+}
+
+.subject-card i {
+    font-size: 3rem; 
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.6);
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px var(--glass-shadow);
+}
+
+.subject-card h2 {
+    font-size: 1.1rem; 
+    font-weight: 600;
+    margin: 0;
+    color: #333; 
+}
+
+.subject-card.disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    pointer-events: none; 
+}
+
+/* --- ৪. কভার পেজ নির্দেশনা ও চ্যাপ্টার বাটন --- */
+
+.instruction-box {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-height: 60vh; 
+    overflow-y: auto;
+}
+
+.instruction-title {
+    font-size: 1.2rem;
+    color: #fff; 
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+}
+
+.image-preview-container {
+    max-width: 100%;
+    margin: 10px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.instruction-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%; 
+}
+
+.chapter-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.subject-card.chapter-button {
+    min-height: 100px;
