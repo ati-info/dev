@@ -103,3 +103,22 @@
                     event.preventDefault(); 
                     
                     loadingOverlay.style.display = 'flex';
+// ৩ সেকেন্ড (৩০০০ মিলিসেকেন্ড) পর আসল কাজ সম্পন্ন হবে
+                    setTimeout(() => {
+                        const link = card.getAttribute('href');
+                        
+                        // যদি লিঙ্কে কোনো অ্যাড্রেস থাকে, তবে সেখানে নেভিগেট করবে
+                        if (link && link !== '#') {
+                            window.location.href = link; 
+                        } else {
+                            // লিংক না থাকলে শুধু লোডিং ওভারলে সরিয়ে দেওয়া
+                            loadingOverlay.style.display = 'none'; 
+                            alert("${card.querySelector('h2').textContent}" পৃষ্ঠাটি প্রস্তুত নয়।);
+                        }
+                    }, 3000); 
+                });
+            });
+        });
+    </script>
+</body>
+</html>
