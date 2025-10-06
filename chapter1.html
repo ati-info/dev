@@ -92,3 +92,41 @@
                     modeSwitch.classList.remove('off');
                     modeSwitch.classList.add('on');
                 }, 500);
+setTimeout(() => {
+                    studyModeOverlay.style.opacity = '0';
+                    studyModeOverlay.style.transform = 'scale(0.8)';
+                    
+                    mainContent.classList.remove('main-content-hidden');
+
+                    setTimeout(() => {
+                        studyModeOverlay.style.display = 'none';
+                    }, 500);
+                }, 2000); 
+            };
+
+            activateStudyMode();
+
+            // পরবর্তী অধ্যায়ের বাটন হ্যান্ডলিং (আগের মতোই)
+            const chapterButtons = document.querySelectorAll('.chapter-button');
+            chapterButtons.forEach(card => {
+                const addActiveClass = () => { if (!card.classList.contains('disabled')) card.classList.add('is-active'); };
+                const removeActiveClass = () => card.classList.remove('is-active');
+
+                card.addEventListener('mousedown', addActiveClass);
+                card.addEventListener('mouseup', removeActiveClass);
+                card.addEventListener('mouseleave', removeActiveClass); 
+                card.addEventListener('touchstart', addActiveClass, {passive: true});
+                card.addEventListener('touchend', removeActiveClass);
+                card.addEventListener('touchcancel', removeActiveClass); 
+                
+                card.addEventListener('click', (event) => {
+                    if (card.classList.contains('disabled')) {
+                        event.preventDefault(); 
+                        alert(২য় অধ্যায় এখনো প্রস্তুত হচ্ছে।);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
