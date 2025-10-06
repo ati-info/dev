@@ -122,3 +122,31 @@ header {
 .subject-card:not(.disabled):hover {
     transform: translateY(-5px); /* উপরে উঠবে */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* শ্যাডো গভীর হবে */
+background-color: #eaf6ff; /* হালকা নীল ব্যাকগ্রাউন্ড */
+}
+
+.subject-card:not(.disabled):hover i {
+    color: #0056b3; /* আইকনের রঙ একটু গাঢ় হবে */
+}
+
+/* ক্লিক/অ্যাক্টিভ এফেক্ট */
+.subject-card.is-active:not(.disabled),
+.subject-card:not(.disabled):active {
+    transform: scale(0.98); /* একটু ছোট হবে */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* শ্যাডো হালকা হবে */
+    background-color: #cce0ff; /* গাঢ় নীল ব্যাকগ্রাউন্ড */
+}
+
+/* ডিসেবল্ড কার্ডের স্টাইল */
+.subject-card.disabled {
+    background-color: #cccccc;
+    color: #666;
+    cursor: not-allowed; /* কার্সর পরিবর্তন */
+    opacity: 0.6; /* অস্বচ্ছতা কমানো */
+    transform: none; /* ডিসেবল্ড কার্ডে হোভার বা অ্যাক্টিভ এফেক্ট বন্ধ */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.subject-card.disabled i {
+    color: #666;
+}
