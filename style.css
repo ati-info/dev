@@ -183,3 +183,39 @@ header {
 }
 
 .slice:nth-child(1) { top: 0; left: 0; border-top-left-radius: 10px; background-color: #007aff; }
+.slice:nth-child(2) { top: 0; left: 50%; border-top-right-radius: 10px; background-color: #34c759; animation-delay: 0.1s; }
+.slice:nth-child(3) { top: 50%; left: 0; border-bottom-left-radius: 10px; background-color: #ff9500; animation-delay: 0.2s; }
+.slice:nth-child(4) { top: 50%; left: 50%; border-bottom-right-radius: 10px; background-color: #ff3b30; animation-delay: 0.3s; }
+
+@keyframes rotateSlice {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+}
+
+/* --- ৫. কভার পেজ স্টাইল এবং অন্যান্য রেসপনসিভ --- */
+/*
+   যদি cover.html এ এই style.css ব্যবহার করেন, তবে এই অংশগুলি প্রযোজ্য হবে।
+   (এগুলি আপনার আগের দেওয়া style.css থেকে নেওয়া হয়েছে)
+*/
+.cover-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; 
+    min-height: 80vh; 
+    text-align: center;
+    padding: 30px 20px;
+}
+/* ... (কভার পেজের অন্যান্য স্টাইল) ... */
+
+
+/* রেসপনসিভ ডিজাইন */
+@media (max-width: 600px) {
+    .subject-grid {
+        grid-template-columns: 1fr;
+    }
+    .glass-container {
+        padding: 20px;
+        border-radius: 20px;
+    }
+}
