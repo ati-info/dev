@@ -227,3 +227,74 @@ text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         font-size: 1rem;
     }
 }
+/* --- নতুন স্টাইল: কভার পেজ নির্দেশনা ও চ্যাপ্টার বাটন (Biology, Physics, etc. পেজগুলোর জন্য) --- */
+
+.instruction-box {
+    /* Glassmorphism বক্সের ভিতরের স্টাইল */
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.instruction-title {
+    font-size: 1.2rem;
+    color: #fff; /* ব্যাকগ্রাউন্ডের ওপর ভালো দেখাবে */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+}
+
+.image-preview-container {
+    max-width: 100%;
+    margin: 10px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.instruction-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* চ্যাপ্টার বাটনগুলোর লেআউট (এক কলাম) */
+.chapter-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+/* চ্যাপ্টার বাটনের আকার (আগের subject-card স্টাইল ব্যবহার করে) */
+.subject-card.chapter-button {
+    min-height: 100px;
+    max-width: 450px; /* মোবাইলে চওড়া বাটন */
+    width: 100%;
+}
+.subject-card.chapter-button i {
+    font-size: 2rem; /* আইকনের সাইজ ছোট করা হলো */
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.subject-card.chapter-button h2 {
+    font-size: 1rem;
+}
+
+.future-note {
+    font-size: 0.9rem;
+    color: #ccc; /* হালকা ধূসর টেক্সট */
+    margin-top: 5px;
+}
+
+/* --- মোবাইল রেসপনসিভনেস এডজাস্টমেন্ট --- */
+@media (max-width: 650px) {
+    /* চ্যাপ্টার বাটনের অতিরিক্ত এডজাস্টমেন্ট */
+    .subject-card.chapter-button {
+        max-width: 100%; /* মোবাইলে পুরো প্রস্থ জুড়ে থাকবে */
+    }
+}
