@@ -170,3 +170,60 @@ header {
     color: #fff;
     font-size: 1.1rem;
     font-weight: 500;
+text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* লোডার অ্যানিমেশন (আগের মতোই থাকবে) */
+.loader-center {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.slice {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    animation: rotateSlice 2s infinite ease-in-out;
+}
+
+.slice:nth-child(1) { top: 0; left: 0; border-top-left-radius: 10px; background-color: #007aff; }
+.slice:nth-child(2) { top: 0; left: 50%; border-top-right-radius: 10px; background-color: #34c759; animation-delay: 0.1s; }
+.slice:nth-child(3) { top: 50%; left: 0; border-bottom-left-radius: 10px; background-color: #ff9500; animation-delay: 0.2s; }
+.slice:nth-child(4) { top: 50%; left: 50%; border-bottom-right-radius: 10px; background-color: #ff3b30; animation-delay: 0.3s; }
+
+@keyframes rotateSlice {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+}
+
+
+/* --- ৫. রেসপনসিভ ডিজাইন (মোবাইল ফ্রেন্ডলি) --- */
+@media (max-width: 650px) {
+    .glass-container {
+        padding: 20px;
+        border-radius: 20px;
+        margin: 15px;
+        /* মোবাইল ভিউতে কনটেইনারের প্রস্থ আরও বাড়ানো হলো */
+        width: calc(100% - 30px); 
+    }
+    
+    /* মোবাইলে একটি কলাম */
+    .subject-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .subject-card {
+        min-height: 100px; /* মোবাইলে উচ্চতা সামান্য কমানো হলো */
+    }
+    
+    .subject-card i {
+        font-size: 2.5rem; /* মোবাইলে আইকন সামান্য ছোট */
+    }
+    .subject-card h2 {
+        font-size: 1rem;
+    }
+}
