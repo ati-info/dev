@@ -93,3 +93,50 @@
                     modeSwitch.classList.remove('off');
                     modeSwitch.classList.add('on');
                 }, 500);
+// ২ সেকেন্ড পর পপ-আপ বন্ধ হবে
+                setTimeout(() => {
+                    // পপ-আপের অ্যানিমেশন শেষ করে এটি সরিয়ে দেওয়া
+                    studyModeOverlay.style.opacity = '0';
+                    studyModeOverlay.style.transform = 'scale(0.8)';
+                    
+                    // মূল কন্টেন্ট দেখানো
+                    mainContent.classList.remove('main-content-hidden');
+
+                    // ১ সেকেন্ড পর ওভারলে ডিসপ্লে: none করে দেওয়া
+                    setTimeout(() => {
+                        studyModeOverlay.style.display = 'none';
+                    }, 500);
+
+                }, 2000); // মোট ২ সেকেন্ড ধরে পপ-আপটি দেখাবে
+            };
+
+            // পেজ লোড হওয়ার সাথে সাথে স্টাডি মোড অ্যাক্টিভেট হবে
+            activateStudyMode();
+
+            // ২. পরবর্তী চ্যাপ্টারের বাটন অ্যানিমেশন (আগের মতোই)
+            chapterButtons.forEach(card => {
+                // Hover/Touch অ্যানিমেশন
+                const addActiveClass = () => { if (!card.classList.contains('disabled')) card.classList.add('is-active'); };
+                const removeActiveClass = () => card.classList.remove('is-active');
+
+                card.addEventListener('mousedown', addActiveClass);
+                card.addEventListener('mouseup', removeActiveClass);
+                card.addEventListener('mouseleave', removeActiveClass); 
+                card.addEventListener('touchstart', addActiveClass, {passive: true});
+                card.addEventListener('touchend', removeActiveClass);
+                card.addEventListener('touchcancel', removeActiveClass); 
+                
+                // ক্লিক অ্যানিমেশন (লোডিং)
+                card.addEventListener('click', (event) => {
+                    if (card.classList.contains('disabled')) {
+                        event.preventDefault(); 
+                        alert(২য় অধ্যায় এখনো প্রস্তুত হচ্ছে।);
+                        return;
+                    }
+                    // এখানে লোডিং অ্যানিমেশন দেখানোর কোড যুক্ত করুন যদি প্রয়োজন হয়
+                });
+            });
+        });
+    </script>
+</body>
+</html>
