@@ -102,3 +102,21 @@
                     loadingOverlay.style.display = 'flex'; 
 
                     // ⚠️ গুরুত্বপূর্ণ: এখানে আপনার আসল ডেটা লোডিং বা অ্যাসিঙ্ক্রোনাস কাজ হবে।
+// উদাহরণস্বরূপ, ৩ সেকেন্ড পর লোডিং শেষ হলে অন্য পেজে যাওয়া:
+                    setTimeout(() => {
+                        const link = card.getAttribute('href');
+                        // লোডিং শেষ হলে অন্য পেজে যান
+                        if (link && link !== '#') {
+                            window.location.href = link; 
+                        } else {
+                            // যদি কোনো লিংক না থাকে, শুধু লোডিং ওভারলে সরিয়ে দিন
+                            loadingOverlay.style.display = 'none'; 
+                            alert("${card.querySelector('h2').textContent}" পৃষ্ঠাটি প্রস্তুত নয়।);
+                        }
+                    }, 3000); // ৩ সেকেন্ডের জন্য লোডিং দেখানো হবে
+                });
+            });
+        });
+    </script>
+</body>
+</html>
