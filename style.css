@@ -1,0 +1,172 @@
+/* গ্লোবাল সেটিংস */
+:root {
+    /* Glassmorphism ভ্যারিয়েবলস */
+    --glass-bg: rgba(255, 255, 255, 0.2); 
+    --glass-border: rgba(255, 255, 255, 0.18); 
+    --glass-shadow: rgba(0, 0, 0, 0.1); 
+    --primary-color: #007aff; 
+    --text-color: #1c1c1e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden; 
+    position: relative;
+    /* মোবাইল ডিভাইসে যাতে পুরো ভিউপোর্ট ব্যবহার করে */
+    min-height: 100vh; 
+}
+
+/* --- ১. কাস্টম ব্যাকগ্রাউন্ড ইফেক্ট (মোবাইল অপটিমাইজড) --- */
+.background-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* নিশ্চিত করা হলো ছবিটি পুরো কভার করবে */
+    background: url('images/photo_1759768080.jpg') no-repeat center center/cover;
+    filter: brightness(1.05) saturate(1.1); 
+    z-index: -2;
+}
+
+/* --- ২. Glassmorphism কনটেইনার --- */
+.glass-container {
+    padding: 30px;
+    border-radius: 25px; 
+    background: var(--glass-bg);
+    box-shadow: 0 8px 32px var(--glass-shadow);
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+    max-width: 90%;
+    width: 600px; /* ল্যাপটপ/ট্যাবলেটে সর্বোচ্চ প্রস্থ */
+    margin: 20px; /* উপরে-নিচে কিছুটা ফাঁকা রাখা হলো */
+}
+
+.main-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+.glass-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff; 
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.glass-subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #e0e0e0;
+}
+
+
+/* --- ৩. সাবজেক্ট গ্রিড ও কার্ড স্টাইল (মাঝারি বাটন সাইজ) --- */
+.subject-grid {
+    display: grid;
+    /* ডেস্কটপ বা ট্যাবলেটের জন্য দুটি কলাম */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.subject-card {
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* কার্ডের ন্যূনতম উচ্চতা বাড়ানো হলো (মাঝারি সাইজ) */
+    min-height: 150px; 
+    padding: 20px 10px;
+    
+    background: rgba(255, 255, 255, 0.3); 
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 18px; 
+    
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+}
+
+.subject-card:hover:not(.disabled) {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px var(--glass-shadow);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* ক্লিক অ্যানিমেশন (iOS Press Effect) */
+.subject-card.is-active:not(.disabled) {
+    transform: scale(0.95);
+    opacity: 0.8;
+    box-shadow: none;
+}
+
+
+.subject-card i {
+    font-size: 3rem; /* আইকনের আকার বাড়ানো হলো */
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.6);
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px var(--glass-shadow);
+}
+
+.subject-card h2 {
+    font-size: 1.1rem; /* টেক্সটের আকার বাড়ানো হলো */
+    font-weight: 600;
+    margin: 0;
+    color: #333; /* কার্ডের ভেতরে টেক্সট রঙ কিছুটা গাঢ় */
+}
+
+/* Disabled কার্ডের স্টাইল */
+.subject-card.disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    pointer-events: none; 
+}
+
+
+/* --- ৪. লোডার স্টাইল --- */
+#loading-overlay {
+    /* ... (আগের মতোই থাকবে) ... */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.2); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.loading-text {
+    margin-top: 15px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
