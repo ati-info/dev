@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>১ম অধ্যায় - প্রশ্ন ও উত্তর</title>
     
-    <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="style.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -32,27 +31,9 @@
                 <p class="glass-subtitle">জীববিজ্ঞান</p>
             </header>
 
-            <div class="qa-section">
-                
-                <div class="qa-item">
-                    <h3 class="question-number">১.</h3>
-                    <p class="question-text">জীববিজ্ঞানের প্রধান শাখাগুলো কী কী?</p>
-                    <p class="answer-text">জীববিজ্ঞানের প্রধান দুটি শাখা হলো: ভৌত জীববিজ্ঞান (Physical Biology) এবং ফলিত জীববিজ্ঞান (Applied Biology)। প্রতিটি শাখায় জীবের বিভিন্ন দিক নিয়ে আলোচনা করা হয়।</p>
-                </div>
-
-                <div class="qa-item">
-                    <h3 class="question-number">২.</h3>
-                    <p class="question-text">ট্যাক্সোনমি (Taxonomy) কী?</p>
-                    <p class="answer-text">জীবজগতের শ্রেণিবিন্যাস এবং নামকরণের বিজ্ঞানকে ট্যাক্সোনমি বলে। এটি জীবের পরিচয়, নামকরণ ও শ্রেণিবিন্যাসের নিয়মাবলি নিয়ে কাজ করে।</p>
-                </div>
-
-                <div class="qa-item">
-                    <h3 class="question-number">৩.</h3>
-                    <p class="question-text">বায়োইনফরমেটিক্স কীসের সাথে যুক্ত?</p>
-                    <p class="answer-text">বায়োইনফরমেটিক্স হলো জীববিজ্ঞানের তথ্যগুলি কম্পিউটার প্রযুক্তির মাধ্যমে বিশ্লেষণ করার বিজ্ঞান। এটি সাধারণত জিনোম সিকোয়েন্স এবং প্রোটিন কাঠামো বিশ্লেষণে ব্যবহৃত হয়।</p>
-                </div>
-
-                </div>
+            <div class="qa-section" id="qa-container">
+                <p style="text-align: center; color: #fff;">প্রশ্ন ও উত্তর লোড হচ্ছে...</p>
+            </div>
 
             <div class="chapter-grid">
                 <a href="#" class="subject-card chapter-button disabled" data-chapter="2">
@@ -67,76 +48,47 @@
     </div>
 
     <div id="loading-overlay" style="display: none;">
-        <div class="loader-center">
-            <div class="slice"></div>
-            <div class="slice"></div>
-            <div class="slice"></div>
-            <div class="slice"></div>
         </div>
-        <div class="loading-text">লোড হচ্ছে... অনুগ্রহ করে অপেক্ষা করুন</div>
-    </div>
 
     <script>
+        // ⚠️ আপনার Telegram বট থেকে পাওয়া JSON ডাটাটি এখানে বা fetch() এর মাধ্যমে লোড হবে
+        const botData = [
+            { q: "জীববিজ্ঞানের প্রধান শাখাগুলো কী কী?", a: "জীববিজ্ঞানের প্রধান দুটি শাখা হলো: ভৌত জীববিজ্ঞান (Physical Biology) এবং ফলিত জীববিজ্ঞান (Applied Biology)।" },
+            { q: "ট্যাক্সোনমি (Taxonomy) কী?", a: "জীবজগতের শ্রেণিবিন্যাস এবং নামকরণের বিজ্ঞানকে ট্যাক্সোনমি বলে।" },
+            { q: "বায়োইনফরমেটিক্স কীসের সাথে যুক্ত?", a: "বায়োইনফরমেটিক্স হলো জীববিজ্ঞানের তথ্যগুলি কম্পিউটার প্রযুক্তির মাধ্যমে বিশ্লেষণ করার বিজ্ঞান।" },
+            { q: "জীববিজ্ঞান শব্দটি প্রথম কে ব্যবহার করেন?", a: "জীববিজ্ঞান (Biology) শব্দটি প্রথম ব্যবহার করেন জ্যাঁ ব্যাপটিস্ট ল্যামার্ক এবং ট্রেভিরানাস।" },
+            { q: "DNA এবং RNA এর মূল পার্থক্য কী?", a: "DNA-তে ডিঅক্সিরাইবোজ শর্করা ও থাইমিন থাকে, যেখানে RNA-তে রাইবোজ শর্করা ও ইউরাসিল থাকে।" }
+        ];
+
+        function loadQuestionsAndAnswers(data) {
+            const qaContainer = document.getElementById('qa-container');
+            qaContainer.innerHTML = '';
+
+            data.forEach((item, index) => {
+                const qaItem = document.createElement('div');
+                qaItem.className = 'qa-item';
+                
+                qaItem.innerHTML = 
+                    <h3 class="question-number">${index + 1}.</h3>
+                    <p class="question-text">${item.q}</p>
+                    <p class="answer-text">${item.a}</p>
+                ;
+                qaContainer.appendChild(qaItem);
+            });
+        }
+        
         document.addEventListener('DOMContentLoaded', () => {
             const studyModeOverlay = document.getElementById('study-mode-overlay');
             const mainContent = document.getElementById('main-content');
             const modeSwitch = document.getElementById('mode-switch');
-            const chapterButtons = document.querySelectorAll('.chapter-button');
-
-            // ১. স্টাডি মোড অ্যানিমেশন ও হ্যান্ডলিং
+            
             const activateStudyMode = () => {
-                // পপ-আপ দেখানোর জন্য ওভারলে চালু
                 studyModeOverlay.style.display = 'flex';
                 
-                // ০.৫ সেকেন্ড পর সুইচটি অন হওয়ার অ্যানিমেশন শুরু হবে
+                // ⚠️ কন্টেন্ট লোড শুরু
+                loadQuestionsAndAnswers(botData); 
+
                 setTimeout(() => {
                     modeSwitch.classList.remove('off');
                     modeSwitch.classList.add('on');
                 }, 500);
-// ২ সেকেন্ড পর পপ-আপ বন্ধ হবে
-                setTimeout(() => {
-                    // পপ-আপের অ্যানিমেশন শেষ করে এটি সরিয়ে দেওয়া
-                    studyModeOverlay.style.opacity = '0';
-                    studyModeOverlay.style.transform = 'scale(0.8)';
-                    
-                    // মূল কন্টেন্ট দেখানো
-                    mainContent.classList.remove('main-content-hidden');
-
-                    // ১ সেকেন্ড পর ওভারলে ডিসপ্লে: none করে দেওয়া
-                    setTimeout(() => {
-                        studyModeOverlay.style.display = 'none';
-                    }, 500);
-
-                }, 2000); // মোট ২ সেকেন্ড ধরে পপ-আপটি দেখাবে
-            };
-
-            // পেজ লোড হওয়ার সাথে সাথে স্টাডি মোড অ্যাক্টিভেট হবে
-            activateStudyMode();
-
-            // ২. পরবর্তী চ্যাপ্টারের বাটন অ্যানিমেশন (আগের মতোই)
-            chapterButtons.forEach(card => {
-                // Hover/Touch অ্যানিমেশন
-                const addActiveClass = () => { if (!card.classList.contains('disabled')) card.classList.add('is-active'); };
-                const removeActiveClass = () => card.classList.remove('is-active');
-
-                card.addEventListener('mousedown', addActiveClass);
-                card.addEventListener('mouseup', removeActiveClass);
-                card.addEventListener('mouseleave', removeActiveClass); 
-                card.addEventListener('touchstart', addActiveClass, {passive: true});
-                card.addEventListener('touchend', removeActiveClass);
-                card.addEventListener('touchcancel', removeActiveClass); 
-                
-                // ক্লিক অ্যানিমেশন (লোডিং)
-                card.addEventListener('click', (event) => {
-                    if (card.classList.contains('disabled')) {
-                        event.preventDefault(); 
-                        alert(২য় অধ্যায় এখনো প্রস্তুত হচ্ছে।);
-                        return;
-                    }
-                    // এখানে লোডিং অ্যানিমেশন দেখানোর কোড যুক্ত করুন যদি প্রয়োজন হয়
-                });
-            });
-        });
-    </script>
-</body>
-</html>
