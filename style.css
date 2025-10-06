@@ -180,3 +180,171 @@ header {
 
 .subject-card.chapter-button {
     min-height: 100px;
+max-width: 450px; 
+    width: 100%;
+}
+.subject-card.chapter-button i {
+    font-size: 2rem; 
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.subject-card.chapter-button h2 {
+    font-size: 1rem;
+}
+
+.future-note {
+    font-size: 0.9rem;
+    color: #ccc; 
+    margin-top: 5px;
+}
+
+/* --- ৫. স্টাডি মোড পপ-আপ এবং প্রশ্ন-উত্তর স্টাইল --- */
+#study-mode-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.study-mode-popup {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 300px;
+    transform: scale(1.1);
+    animation: popup-bounce 0.8s ease-out;
+}
+
+@keyframes popup-bounce {
+    0% { transform: scale(0.5); opacity: 0; }
+    70% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+.popup-title {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* সুইচ বাটন অ্যানিমেশন */
+.switch-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.mode-switch {
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    cursor: default; 
+    position: relative;
+    transition: background-color 0.4s ease;
+    padding: 0;
+}
+
+.mode-switch.off { background-color: #ccc; }
+.mode-switch.on { background-color: #34c759; }
+
+.slider {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease;
+    top: 3px;
+    left: 3px;
+}
+
+.mode-switch.on .slider { transform: translateX(40px); }
+
+.main-content-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s;
+}
+
+/* প্রশ্ন ও উত্তর স্টাইল */
+.qa-section {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.qa-item {
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.question-number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color); 
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: top;
+}
+
+.question-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color); 
+    display: inline;
+}
+
+.answer-text {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    color: #000; 
+    line-height: 1.6;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 3px solid #34c759; 
+}
+
+
+/* --- ৬. রেসপনসিভ ডিজাইন (মোবাইল ফ্রেন্ডলি) --- */
+@media (max-width: 650px) {
+    .glass-container {
+        padding: 20px;
+        border-radius: 20px;
+        margin: 15px;
+        width: calc(100% - 30px); 
+    }
+    
+    .instruction-box {
+        max-height: 45vh; 
+    }
+    .study-mode-popup {
+        padding: 20px;
+        max-width: 90%;
+    }
+    .chapter-grid {
+        gap: 15px;
+    }
+    .subject-card.chapter-button {
+        max-width: 100%;
+        min-height: 80px;
+    }
+}
