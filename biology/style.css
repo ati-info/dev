@@ -176,3 +176,109 @@ header h1 {
     max-width: 450px;
     text-align: center;
     transition: background-color 0.3s, transform 0.2s;
+box-shadow: 0 4px 0 #b89f00; /* 3D ইফেক্টের জন্য শ্যাডো */
+}
+
+.chapter-link:hover {
+    background-color: #fff066;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #b89f00;
+}
+.chapter-link:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #b89f00;
+}
+
+/* --- প্রশ্ন-উত্তর স্টাইল (অধ্যায়ের ভেতরের পেজের জন্য) --- */
+.q {
+    background-color: #222; /* সামান্য হালকা কালো ব্যাকগ্রাউন্ড */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #0000FF; /* বাম পাশে নীল লাইন */
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.question-text {
+    font-weight: bold;
+    color: #0000FF; /* নীল কালার */
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    counter-increment: q-counter;
+    display: block;
+}
+
+.question-text::before {
+    content: "প্রশ্ন " counter(q-counter) ": ";
+    color: #FFD700; /* প্রশ্ন নম্বর হলুদ */
+    margin-right: 5px;
+}
+
+.answer-text {
+    color: #e0e0e0; /* উত্তর সাদাটে/ধূসর */
+    font-size: 1em;
+    margin-top: 10px;
+    line-height: 1.6;
+    border-top: 1px dashed #444;
+    padding-top: 10px;
+}
+
+/* ✅ পার্থক্য/কলাম স্টাইল */
+.column-answer {
+    margin-top: 15px;
+}
+.column-answer table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.column-answer th, .column-answer td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: center;
+}
+.column-answer th {
+    background-color: #FFD700; /* কলাম শিরোনাম হলুদ */
+    color: #1a1a1a;
+    font-weight: bold;
+}
+.column-answer td {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+/* নেভিগেশন বাটন (অধ্যায় পেজের নিচে) */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0 10px;
+}
+.nav-buttons a {
+    background-color: #FFD700;
+    color: #1a1a1a;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.nav-buttons a:hover {
+    background-color: #fff066;
+}
+.nav-buttons a.disabled {
+    background-color: #555;
+    color: #999;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* মিডিয়া স্টাইল */
+.q img, .q video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+}
