@@ -173,3 +173,121 @@ header {
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+/* ⚠️ ফিক্স: ছবিকে তার কনটেইনারের মধ্যে ফিট করার জন্য */
+.instruction-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%; /* ছবি অবশ্যই কনটেইনারের ভেতরে থাকবে */
+}
+
+.chapter-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.subject-card.chapter-button {
+    min-height: 100px;
+    max-width: 450px; 
+    width: 100%;
+}
+.subject-card.chapter-button i {
+    font-size: 2rem; 
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.subject-card.chapter-button h2 {
+    font-size: 1rem;
+}
+
+.future-note {
+    font-size: 0.9rem;
+    color: #ccc; 
+    margin-top: 5px;
+}
+
+/* --- ৫. লোডার স্টাইল --- */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.2); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.loading-text {
+    margin-top: 15px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* লোডার অ্যানিমেশন */
+.loader-center {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.slice {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    animation: rotateSlice 2s infinite ease-in-out;
+}
+
+.slice:nth-child(1) { top: 0; left: 0; border-top-left-radius: 10px; background-color: #007aff; }
+.slice:nth-child(2) { top: 0; left: 50%; border-top-right-radius: 10px; background-color: #34c759; animation-delay: 0.1s; }
+.slice:nth-child(3) { top: 50%; left: 0; border-bottom-left-radius: 10px; background-color: #ff9500; animation-delay: 0.2s; }
+.slice:nth-child(4) { top: 50%; left: 50%; border-bottom-right-radius: 10px; background-color: #ff3b30; animation-delay: 0.3s; }
+
+@keyframes rotateSlice {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+}
+
+
+/* --- ৬. রেসপনসিভ ডিজাইন (মোবাইল ফ্রেন্ডলি) --- */
+@media (max-width: 650px) {
+    .glass-container {
+        padding: 20px;
+        border-radius: 20px;
+        margin: 15px;
+        width: calc(100% - 30px); 
+    }
+    
+    .subject-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .subject-card {
+        min-height: 100px; 
+    }
+    
+    .subject-card i {
+        font-size: 2.5rem; 
+    }
+    .subject-card h2 {
+        font-size: 1rem;
+    }
+
+    /* মোবাইলে কভার পেজ নির্দেশনার বক্সের উচ্চতা আরও সীমিত করা হলো */
+    .instruction-box {
+        max-height: 45vh; 
+    }
+}
