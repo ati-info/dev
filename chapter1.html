@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>১ম অধ্যায় - প্রশ্ন ও উত্তর</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="background-effect"></div>
+
+    <div id="study-mode-overlay">
+        <div class="study-mode-popup">
+            <h2 class="popup-title">Switch<i class="fas fa-retweet"></i> To Study Mode <i class="fas fa-forward"></i></h2>
+            <div class="switch-container">
+                <button id="mode-switch" class="mode-switch off">
+                    <span class="slider"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-container main-content-hidden" id="main-content">
+        <div class="main-body">
+            
+            <header>
+                <h1 class="glass-title">১ম অধ্যায়: প্রশ্ন ও উত্তর</h1>
+                <p class="glass-subtitle">জীববিজ্ঞান</p>
+            </header>
+
+            <div class="qa-section" id="qa-container">
+                <p style="text-align: center; color: #fff;">প্রশ্ন ও উত্তর লোড হচ্ছে...</p>
+            </div>
+
+            <div class="chapter-grid">
+                <a href="#" class="subject-card chapter-button disabled" data-chapter="2">
+                    <i class="fas fa-book"></i>
+                    <h2>২য় অধ্যায় এর প্রশ্ন/ উত্তর</h2>
+                </a>
+                <p class="future-note">
+                    {পরবর্তীতে নতুন অধ্যায় এড করা হলে এখানে বাটনগুলো এড করা হবে }
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-overlay" style="display: none;">
+        </div>
+
+    <script>
+        // ⚠️ আপনার Telegram বট থেকে পাওয়া JSON ডাটাটি এখানে থাকবে বা fetch() এর মাধ্যমে লোড হবে
+        const botData = [
+            { q: "জীববিজ্ঞানের প্রধান শাখাগুলো কী কী?", a: "জীববিজ্ঞানের প্রধান দুটি শাখা হলো: ভৌত জীববিজ্ঞান (Physical Biology) এবং ফলিত জীববিজ্ঞান (Applied Biology)।" },
+            { q: "ট্যাক্সোনমি (Taxonomy) কী?", a: "জীবজগতের শ্রেণিবিন্যাস এবং নামকরণের বিজ্ঞানকে ট্যাক্সোনমি বলে।" },
+            { q: "বায়োইনফরমেটিক্স কীসের সাথে যুক্ত?", a: "বায়োইনফরমেটিক্স হলো জীববিজ্ঞানের তথ্যগুলি কম্পিউটার প্রযুক্তির মাধ্যমে বিশ্লেষণ করার বিজ্ঞান।" },
+            { q: "জীববিজ্ঞান শব্দটি প্রথম কে ব্যবহার করেন?", a: "জীববিজ্ঞান (Biology) শব্দটি প্রথম ব্যবহার করেন জ্যাঁ ব্যাপটিস্ট ল্যামার্ক এবং ট্রেভিরানাস।" },
+            { q: "DNA এবং RNA এর মূল পার্থক্য কী?", a: "DNA-তে ডিঅক্সিরাইবোজ শর্করা ও থাইমিন থাকে, যেখানে RNA-তে রাইবোজ শর্করা ও ইউরাসিল থাকে।" }
+        ];
+
+        function loadQuestionsAndAnswers(data) {
+            const qaContainer = document.getElementById('qa-container');
+            qaContainer.innerHTML = '';
+
+            data.forEach((item, index) => {
+                const qaItem = document.createElement('div');
+                qaItem.className = 'qa-item';
+                
+                qaItem.innerHTML = `
+                    <h3 class="question-number">${index + 1}.</h3>
+                    <p class="question-text">${item.q}</p>
+                    <p class="answer-text">${item.a}</p>
+                `;
+                qaContainer.appendChild(qaItem);
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const studyModeOverlay = document.getElementById('study-mode-overlay');
+            const mainContent = document.getElementById('main-content');
+            const modeSwitch = document.getElementById('mode-switch');
+            
+            const activateStudyMode = () => {
+                studyModeOverlay.style.display = 'flex';
+                
+                // কন্টেন্ট লোড শুরু
+                loadQuestionsAndAnswers(botData); 
+
+                setTimeout(() => {
+                    // সুইচ অন অ্যানিমেশন
+                    modeSwitch.classList.remove('off');
+                    modeSwitch.classList.add('on');
+                }, 500);
+
+                setTimeout(() => {
+                    // পপ-আপ অপসারণ
+                    studyModeOverlay.style.opacity = '0';
+                    studyModeOverlay.style.transform = 'scale(0.8)';
+                    
+                    mainContent.classList.remove('main-content-hidden');
+
+                    setTimeout(() => {
+                        studyModeOverlay.style.display = 'none';
+                    }, 500);
+                }, 2000); 
+            };
+
+            activateStudyMode();
+
+            // অন্যান্য বাটন হ্যান্ডলিং (আগের মতোই)
+            const chapterButtons = document.querySelectorAll('.chapter-button');
+            chapterButtons.forEach(card => {
+                const addActiveClass = () => { if (!card.classList.contains('disabled')) card.classList.add('is-active'); };
+                const removeActiveClass = () => card.classList.remove('is-active');
+
+                card.addEventListener('mousedown', addActiveClass);
+                card.addEventListener('mouseup', removeActiveClass);
+                card.addEventListener('mouseleave', removeActiveClass); 
+                card.addEventListener('touchstart', addActiveClass, {passive: true});
+                card.addEventListener('touchend', removeActiveClass);
+                card.addEventListener('touchcancel', removeActiveClass); 
+                
+                card.addEventListener('click', (event) => {
+                    if (card.classList.contains('disabled')) {
+                        event.preventDefault(); 
+                        alert(`২য় অধ্যায় এখনো প্রস্তুত হচ্ছে।`);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
