@@ -1,0 +1,411 @@
+/* গ্লোবাল সেটিংস */
+:root {
+    /* Glassmorphism ভ্যারিয়েবলস */
+    --glass-bg: rgba(255, 255, 255, 0.2); 
+    --glass-border: rgba(255, 255, 255, 0.18); 
+    --glass-shadow: rgba(0, 0, 0, 0.1); 
+    --primary-color: #007aff; 
+    --text-color: #1c1c1e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden; 
+    position: relative;
+    min-height: 100vh; 
+}
+
+/* --- ১. কাস্টম ব্যাকগ্রাউন্ড ইফেক্ট (Study Mode Background) --- */
+.background-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* ⚠️ স্টাডি মোডের জন্য ব্যাকগ্রাউন্ডের উজ্জ্বলতা ও স্যাচুরেশন কমানো হয়েছে */
+    background: url('images/photo_1759768080.jpg') no-repeat center center/cover;
+    filter: brightness(0.8) contrast(1.1) saturate(0.8); 
+    z-index: -2;
+}
+
+/* --- ২. Glassmorphism কনটেইনার --- */
+.glass-container {
+    padding: 30px;
+    border-radius: 25px; 
+    background: var(--glass-bg);
+    box-shadow: 0 8px 32px var(--glass-shadow);
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+    max-width: 90%;
+    width: 600px; 
+    margin: 20px; 
+}
+
+.main-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+/* টাইটেল স্টাইল */
+.glass-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff; 
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding: 5px 0;
+}
+
+.glass-subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #e0e0e0;
+}
+
+
+/* --- ৩. সাবজেক্ট গ্রিড/কার্ড স্টাইল --- */
+.subject-card {
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px; 
+    padding: 20px 10px;
+    
+    background: rgba(255, 255, 255, 0.3); 
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 18px; 
+    
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+}
+
+.subject-card:hover:not(.disabled) {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px var(--glass-shadow);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* ক্লিক অ্যানিমেশন (iOS Press Effect) */
+.subject-card.is-active:not(.disabled) {
+    transform: scale(0.95);
+    opacity: 0.8;
+    box-shadow: none;
+}
+
+
+.subject-card i {
+    font-size: 3rem; 
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.6);
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px var(--glass-shadow);
+}
+
+.subject-card h2 {
+    font-size: 1.1rem; 
+    font-weight: 600;
+    margin: 0;
+    color: #333; 
+}
+
+.subject-card.disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    pointer-events: none; 
+}
+
+/* --- ৪. কভার পেজ নির্দেশনা ও চ্যাপ্টার বাটন --- */
+
+.instruction-box {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-height: 60vh; 
+    overflow-y: auto; 
+}
+
+.instruction-title {
+    font-size: 1.2rem;
+    color: #fff; 
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+}
+
+.image-preview-container {
+    max-width: 100%;
+    margin: 10px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.instruction-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%;
+}
+
+.chapter-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.subject-card.chapter-button {
+    min-height: 100px;
+    max-width: 450px; 
+    width: 100%;
+}
+.subject-card.chapter-button i {
+    font-size: 2rem; 
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.subject-card.chapter-button h2 {
+    font-size: 1rem;
+}
+
+.future-note {
+    font-size: 0.9rem;
+    color: #ccc; 
+    margin-top: 5px;
+}
+
+/* --- ৫. লোডার স্টাইল --- */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.2); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.loading-text {
+    margin-top: 15px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* লোডার অ্যানিমেশন */
+.loader-center {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.slice {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    animation: rotateSlice 2s infinite ease-in-out;
+}
+
+.slice:nth-child(1) { top: 0; left: 0; border-top-left-radius: 10px; background-color: #007aff; }
+.slice:nth-child(2) { top: 0; left: 50%; border-top-right-radius: 10px; background-color: #34c759; animation-delay: 0.1s; }
+.slice:nth-child(3) { top: 50%; left: 0; border-bottom-left-radius: 10px; background-color: #ff9500; animation-delay: 0.2s; }
+.slice:nth-child(4) { top: 50%; left: 50%; border-bottom-right-radius: 10px; background-color: #ff3b30; animation-delay: 0.3s; }
+
+@keyframes rotateSlice {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+}
+
+/* --- ৬. স্টাডি মোড পপ-আপ এবং প্রশ্ন-উত্তর স্টাইল --- */
+#study-mode-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.study-mode-popup {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 300px;
+    transform: scale(1.1);
+    animation: popup-bounce 0.8s ease-out;
+}
+
+@keyframes popup-bounce {
+    0% { transform: scale(0.5); opacity: 0; }
+    70% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+.popup-title {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* সুইচ বাটন অ্যানিমেশন */
+.switch-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.mode-switch {
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    cursor: default; 
+    position: relative;
+    transition: background-color 0.4s ease;
+    padding: 0;
+}
+
+.mode-switch.off { background-color: #ccc; }
+.mode-switch.on { background-color: #34c759; }
+
+.slider {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease;
+    top: 3px;
+    left: 3px;
+}
+
+.mode-switch.on .slider { transform: translateX(40px); }
+
+.main-content-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s;
+}
+
+/* প্রশ্ন ও উত্তর স্টাইল */
+.qa-section {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.qa-item {
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.question-number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color); 
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: top;
+}
+
+.question-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color); 
+    display: inline;
+}
+
+.answer-text {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    color: #000; 
+    line-height: 1.6;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 3px solid #34c759; 
+}
+
+
+/* --- ৭. রেসপনসিভ ডিজাইন (মোবাইল ফ্রেন্ডলি) --- */
+@media (max-width: 650px) {
+    .glass-container {
+        padding: 20px;
+        border-radius: 20px;
+        margin: 15px;
+        width: calc(100% - 30px); 
+    }
+    
+    .instruction-box {
+        max-height: 45vh; 
+    }
+    .study-mode-popup {
+        padding: 20px;
+        max-width: 90%;
+    }
+    .chapter-grid {
+        gap: 15px;
+    }
+    .subject-card.chapter-button {
+        max-width: 100%;
+        min-height: 80px;
+    }
+    .subject-card i {
+        font-size: 2rem; 
+    }
+    .subject-card h2 {
+        font-size: 1rem;
+    }
+}
